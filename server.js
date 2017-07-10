@@ -36,6 +36,23 @@ db.once('open', function () {
   console.log('Mongoose connection successful.');
 });
 
+// routes
+app.get('/api/saved', function () {
+
+});
+
+app.post('/api/saved', function () {
+
+});
+
+app.delete('/api/delete', function () {
+
+});
+
+app.get('*', function () {
+
+});
+
 // listener
 app.listen(PORT, function () {
   console.log('Listening on PORT: ' + PORT);
