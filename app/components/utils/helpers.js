@@ -8,8 +8,10 @@ var helper = {
     var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 
     queryURL += '?' + $.param({
+      'api-key': nytAPI,
       q: search,
-      'api-key': nytAPI
+      begin_date: '19841010',
+      end_date: '20170101'
     });
     return axios.get(queryURL).then(function (response) {
       if (response.data.results[0]) {
