@@ -13,7 +13,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 var uristring =
   process.env.MONGODB_URI ||
-  'mongodb://localhost/nytreactDB';
+  'mongodb://localhost/nytreact';
 
 // logging
 app.use(logger('dev'));
