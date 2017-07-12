@@ -56,5 +56,4 @@ app.get('*', function () {
 // listener
 app.listen(PORT, function () {
   console.log('Listening on PORT: ' + PORT);
-})
-;
+});
