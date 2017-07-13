@@ -2,8 +2,11 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 // children
+var Search = require('./children/Search');
+var Saved = require('./children/Saved');
 
 // helpers
+var helpers = require('./utils/helpers');
 
 // main component
 var Main = React.createClass({
@@ -26,11 +29,7 @@ var Main = React.createClass({
     return (
       <div className="container-fluid">
 
-        <div className="jumbotron text-center">
-          <h1 className="display-1">NYT React</h1>
-        </div>
-
-        <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+        <nav className="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
           <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -42,10 +41,14 @@ var Main = React.createClass({
           </div>
         </nav>
 
+        <div className="jumbotron text-center">
+          <h1 className="display-1">NYT React</h1>
+        </div>
+
         <div className="row">
           {this.props.children}
         </div>
-        
+
       </div>
     );
   }
