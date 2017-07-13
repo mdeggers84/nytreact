@@ -5,6 +5,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 // schemas
+var Article = require('./models/Article');
 
 // express instance
 var app = express();
@@ -37,8 +38,16 @@ db.once('open', function () {
 });
 
 // routes
-app.get('/api/saved', function () {
-
+app.get('/api/saved', function (req, res) {
+  Article.find({}).sort([
+    ['date', 'descending']
+  ]).limit(5).exec(function (err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
 });
 
 app.post('/api/saved', function () {
