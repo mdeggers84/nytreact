@@ -1,12 +1,41 @@
 var React = require('react');
 
 var Query = React.createClass({
+  getInitialState: function () {
+    return {
+      query: {
+        term: '',
+        qty: 5,
+        startDate: '',
+        endDate: ''
+      }
+    };
+  },
+
+  handleChange: function () {
+    
+  },
+
+  handleSubmit: function (event) {
+    event.preventDefault();
+
+    this.props.setTerm(this.state.term);
+    this.setState({
+      query: {
+        term: '',
+        qty: 5,
+        startDate: '',
+        endDate: ''
+      }
+    });
+  },
+
   render: function () {
     return (
       <div className="card" id="searchCard">
         <h3 className="card-header">Search</h3>
         <div className="card-block">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="search-box">Search Term</label>
               <input type="text" className="form-control" id="search-box" placeholder="Enter Search Here" required />
