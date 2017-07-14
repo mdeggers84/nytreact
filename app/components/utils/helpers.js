@@ -7,7 +7,6 @@ var helper = {
   runQuery: function (search) {
     var startDate = search.startDate || '19841010';
     var endDate = search.endDate || new Date().toISOString().substr(0, 10).replace(/-/g, '');
-    console.log(startDate, endDate);
 
     var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 
@@ -18,9 +17,12 @@ var helper = {
       end_date: endDate
     });
     return axios.get(queryURL).then(function (response) {
-      var data = response.data.response.docs;
-      console.log(data.formatted);
+      var data = [];
+
       if (data) {
+        for (let i = 0; i < 5; i++) {
+          data.push(response.data.response.docs[i]);
+        }
         return data;
       }
 

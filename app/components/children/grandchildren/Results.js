@@ -7,7 +7,13 @@ var Results = React.createClass({
         <h3 className="card-header">Results</h3>
         <div className="card-block">
           <h4 className="card-title">Results</h4>
-          <p>Results go here.</p>
+          {this.props.articles.map(function (search, i) {
+            return (
+              <div key={i}>
+                <p><a href={search.web_url} target="_blank">{search.headline.main}</a></p>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

@@ -10,7 +10,7 @@ var Search = React.createClass({
       <div className="col-lg-12">
         <Query setQuery={this.props.setQuery} />
         <hr />
-        <Results />
+        <Results articles={this.props.articles} />
       </div>
     );
   }

@@ -17,7 +17,8 @@ var Main = React.createClass({
         term: '',
         startDate: '',
         endDate: ''
-      }
+      },
+      articles: []
     };
   },
 
@@ -30,7 +31,8 @@ var Main = React.createClass({
   componentDidUpdate: function () {
     helpers.runQuery(this.state.query).then(function (data) {
       console.log(data);
-    });
+      this.setState({ articles: data });
+    }.bind(this));
   },
 
   setQuery: function (query) {
@@ -58,7 +60,7 @@ var Main = React.createClass({
         </div>
 
         <div className="row">
-          {React.cloneElement(this.props.children, { setQuery: this.setQuery })}
+          {React.cloneElement(this.props.children, { setQuery: this.setQuery, articles: this.state.articles })}
         </div>
 
       </div>
