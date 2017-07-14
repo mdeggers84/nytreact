@@ -15,9 +15,8 @@ var Main = React.createClass({
     return {
       query: {
         term: '',
-        qty: 5,
-        startDate: '1990-01-01',
-        endDate: new Date().toISOString().substr(0, 10)
+        startDate: '',
+        endDate: ''
       }
     };
   },
@@ -29,12 +28,13 @@ var Main = React.createClass({
 
   // on component change
   componentDidUpdate: function () {
-    console.log(this.state.query);
+    helpers.runQuery(this.state.query).then(function (data) {
+      console.log(data);
+    });
   },
 
   setQuery: function (query) {
-    // this.setState({ query: query });
-    console.log('grrRRrrRRrrr');
+    this.setState({ query: query });
   },
 
   render: function () {

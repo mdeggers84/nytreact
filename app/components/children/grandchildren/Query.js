@@ -5,9 +5,8 @@ var Query = React.createClass({
     return {
       query: {
         term: '',
-        qty: 5,
-        startDate: '1990-01-01',
-        endDate: new Date().toISOString().substr(0, 10)
+        startDate: '',
+        endDate: ''
       }
     };
   },
@@ -16,18 +15,19 @@ var Query = React.createClass({
     var name = event.target.name;
     var value = event.target.value;
 
-    this.setState({ [name]: value });
+    this.state.query[name] = value;
+
+    this.forceUpdate();
   },
 
   handleSubmit: function (event) {
     event.preventDefault();
 
     this.props.setQuery(this.state.query);
-    
+
     this.setState({
       query: {
         term: '',
-        qty: 5,
         startDate: '',
         endDate: ''
       }
@@ -45,23 +45,21 @@ var Query = React.createClass({
               <input type="text" className="form-control" name="term" placeholder="Enter Search Here"
                 defaultValue={this.state.query.term}
                 onChange={this.handleChange}
-                required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="result-count">Number of results to retrieve.</label>
-              <select className="form-control" name="qty" defaultValue={this.state.query.qty}>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-              </select>
+                required
+              />
             </div>
             <div className="form-group">
               <label htmlFor="start-year">Start Year (optional)</label>
-              <input type="date" className="form-control" name="startYear" defaultValue={this.state.query.startDate} />
+              <input type="date" className="form-control" name="startYear" defaultValue={this.state.query.startDate}
+                onChange={this.handleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="end-year">End Year (optional)</label>
-              <input type="date" className="form-control" name="endYear" defaultValue={this.state.query.endDate} />
+              <input type="date" className="form-control" name="endYear"
+                defaultValue={this.state.query.endDate}
+                onChange={this.handleChange}
+              />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
