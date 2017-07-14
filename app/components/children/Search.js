@@ -8,7 +8,7 @@ var Search = React.createClass({
   render: function () {
     return (
       <div className="col-lg-12">
-        <Query />
+        <Query setQuery={this.props.setQuery} />
         <hr />
         <Results />
       </div>

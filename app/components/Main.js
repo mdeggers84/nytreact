@@ -12,7 +12,14 @@ var helpers = require('./utils/helpers');
 var Main = React.createClass({
   // initial state
   getInitialState: function () {
-    return {};
+    return {
+      query: {
+        term: '',
+        qty: 5,
+        startDate: '1990-01-01',
+        endDate: new Date().toISOString().substr(0, 10)
+      }
+    };
   },
 
   // when page renders
@@ -22,7 +29,12 @@ var Main = React.createClass({
 
   // on component change
   componentDidUpdate: function () {
+    console.log(this.state.query);
+  },
 
+  setQuery: function (query) {
+    // this.setState({ query: query });
+    console.log('grrRRrrRRrrr');
   },
 
   render: function () {
@@ -46,7 +58,7 @@ var Main = React.createClass({
         </div>
 
         <div className="row">
-          {this.props.children}
+          {React.cloneElement(this.props.children, { setQuery: this.setQuery })}
         </div>
 
       </div>
