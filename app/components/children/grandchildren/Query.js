@@ -43,21 +43,21 @@ var Query = React.createClass({
             <div className="form-group">
               <label htmlFor="search-box">Search Term</label>
               <input type="text" className="form-control" name="term" placeholder="Enter Search Here"
-                defaultValue={this.state.query.term}
+                value={this.state.query.term}
                 onChange={this.handleChange}
                 required
               />
             </div>
             <div className="form-group">
               <label htmlFor="start-year">Start Year (optional)</label>
-              <input type="date" className="form-control" name="startYear" defaultValue={this.state.query.startDate}
+              <input type="date" className="form-control" name="startYear" value={this.state.query.startDate}
                 onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
               <label htmlFor="end-year">End Year (optional)</label>
               <input type="date" className="form-control" name="endYear"
-                defaultValue={this.state.query.endDate}
+                value={this.state.query.endDate}
                 onChange={this.handleChange}
               />
             </div>
