@@ -9,6 +9,7 @@ var Saved = React.createClass({
 
     helpers.deleteArticle(id).then(function () {
       console.log('Article Deleted');
+      window.location.reload();
     });
   },
 
