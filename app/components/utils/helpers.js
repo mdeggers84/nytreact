@@ -39,8 +39,8 @@ var helper = {
     return axios.post('/api/saved', { article });
   },
 
-  deleteArticle: function (article) {
-    return axios.delete('/api/saved', { article: article });
+  deleteArticle: function (id) {
+    return axios.delete('/api/saved/' + id);
   }
 };
 

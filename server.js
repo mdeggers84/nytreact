@@ -39,9 +39,7 @@ db.once('open', function () {
 
 // routes
 app.get('/api/saved', function (req, res) {
-  Article.find({}).sort([
-    ['date', 'descending']
-  ]).limit(5).exec(function (err, doc) {
+  Article.find({}, function (err, doc) {
     if (err) {
       console.log(err);
     } else {
@@ -65,8 +63,15 @@ app.post('/api/saved', function (req, res) {
   });
 });
 
-app.delete('/api/delete', function () {
-
+app.delete('/api/saved/:id', function (req, res) {
+  console.log('======================\n', req.params.id);
+  Article.findByIdAndRemove({ _id: req.params.id }, function (error) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send('Article Deleted');
+    }
+  });
 });
 
 app.get('*', function () {

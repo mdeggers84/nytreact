@@ -11,7 +11,9 @@ var Results = React.createClass({
       url: this.props.articles[event.target.id].web_url
     };
 
-    helpers.postArticle(article);
+    helpers.postArticle(article).then(function () {
+      console.log('Article Saved');
+    });
   },
 
   render: function () {

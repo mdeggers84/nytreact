@@ -18,13 +18,20 @@ var Main = React.createClass({
         startDate: '',
         endDate: ''
       },
-      articles: []
+      articles: [],
+      saved: []
     };
   },
 
   // when page renders
   componentDidMount: function () {
-
+    helpers.getArticle().then(function (response) {
+      console.log(response);
+      if (response !== this.state.saved) {
+        console.log('Saved Articles', response.data);
+        this.setState({ saved: response.data });
+      }
+    }.bind(this));
   },
 
   // on component change
@@ -32,6 +39,12 @@ var Main = React.createClass({
     helpers.runQuery(this.state.query).then(function (data) {
       console.log(data);
       this.setState({ articles: data });
+
+      helpers.getArticle().then(function (response) {
+        console.log('Saved Articles: ', response.data);
+
+        this.setState({ saved: response.data });
+      }.bind(this));
     }.bind(this));
   },
 
@@ -60,7 +73,10 @@ var Main = React.createClass({
         </div>
 
         <div className="row">
-          {React.cloneElement(this.props.children, { setQuery: this.setQuery, articles: this.state.articles })}
+          {React.cloneElement(this.props.children, {
+            setQuery: this.setQuery,
+            articles: this.state.articles,
+            saved: this.state.saved })}
         </div>
 
       </div>
