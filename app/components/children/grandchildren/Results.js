@@ -1,10 +1,19 @@
 var React = require('react');
+var helpers = require('../../utils/helpers');
 
 var Results = React.createClass({
+
   handleSubmit: function (event) {
     event.preventDefault();
-    console.log('yus');
+
+    var article = {
+      title: this.props.articles[event.target.id].headline.main,
+      url: this.props.articles[event.target.id].web_url
+    };
+
+    helpers.postArticle(article);
   },
+
   render: function () {
     return (
       <div className="card" id="resultsCard">
@@ -13,7 +22,7 @@ var Results = React.createClass({
           <h4 className="card-title">Results</h4>
           {this.props.articles.map(function (search, i) {
             return (
-              <form key={i} onSubmit={this.handleSubmit}>
+              <form id={i} key={i} onSubmit={this.handleSubmit}>
                 <div className="row">
                   <div className="col-lg-10">
                     <p><a href={search.web_url} target="_blank">{search.headline.main}</a></p>
@@ -29,6 +38,7 @@ var Results = React.createClass({
       </div>
     );
   }
+
 });
 
 module.exports = Results;

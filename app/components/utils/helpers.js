@@ -16,6 +16,7 @@ var helper = {
       begin_date: startDate,
       end_date: endDate
     });
+
     return axios.get(queryURL).then(function (response) {
       var data = [];
 
@@ -35,7 +36,7 @@ var helper = {
   },
 
   postArticle: function (article) {
-    return axios.post('/api/saved', { article: article });
+    return axios.post('/api/saved', { article });
   },
 
   deleteArticle: function (article) {

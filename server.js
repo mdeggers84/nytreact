@@ -50,8 +50,19 @@ app.get('/api/saved', function (req, res) {
   });
 });
 
-app.post('/api/saved', function () {
+app.post('/api/saved', function (req, res) {
+  console.log('BODY: ', req.body.article.title, req.body.article.url);
 
+  Article.create({
+    title: req.body.article.title,
+    url: req.body.article.url
+  }, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send('Saved Article');
+    }
+  });
 });
 
 app.delete('/api/delete', function () {
