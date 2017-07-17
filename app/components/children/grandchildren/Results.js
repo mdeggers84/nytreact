@@ -30,7 +30,7 @@ var Results = React.createClass({
                     <p><a href={search.web_url} target="_blank">{search.headline.main}</a></p>
                   </div>
                   <div className="col-lg-2">
-                    <button type="submit">Save</button>
+                    <button className="btn btn-primary" type="submit">Save</button>
                   </div>
                 </div>
               </form>
