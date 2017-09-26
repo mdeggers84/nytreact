@@ -21,6 +21,7 @@
   "homepage": "https://github.com/mdeggers84/nytreact#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "body-parser": "^1.18.2",
     "express": "^4.15.5"
   },
   "devDependencies": {
